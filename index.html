@@ -1,0 +1,758 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080a1a">
+<title>SAHARVERSE | جهان بی‌نهایت سحر</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg:#080a18;
+  --panel:rgba(255,255,255,.055);
+  --line:rgba(255,255,255,.12);
+  --text:#f8f4ff;
+  --muted:#aaa9c4;
+  --pink:#ff70c5;
+  --blue:#55cfff;
+  --gold:#e9c77c;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;background:var(--bg);color:var(--text);
+ font-family:'Vazirmatn',Tahoma,sans-serif;
+ overflow-x:hidden;min-height:100vh;
+}
+button,input{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible{outline:2px solid white;outline-offset:4px}
+button:active{transform:scale(.97)}
+#stars{
+ position:fixed;inset:0;width:100%;height:100%;
+ pointer-events:none;z-index:-2;
+}
+.aurora{
+ position:fixed;inset:-20%;z-index:-3;pointer-events:none;
+ background:
+ radial-gradient(ellipse at 15% 20%,#32205255,transparent 45%),
+ radial-gradient(ellipse at 85% 60%,#124f7850,transparent 45%);
+ animation:aurora 16s ease-in-out infinite alternate;
+}
+@keyframes aurora{to{transform:translate(4%,-3%) scale(1.1)}}
+header{
+ display:flex;justify-content:space-between;align-items:center;
+ gap:12px;padding:18px 6%;border-bottom:1px solid var(--line);
+ background:#080a18b8;backdrop-filter:blur(18px);
+ position:sticky;top:0;z-index:20;
+}
+.logo{font-size:19px;font-weight:800;letter-spacing:2px}
+.logo span{color:var(--pink)}
+nav{display:flex;gap:14px;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none;font-size:12px}
+nav a:hover{color:white}
+.hero{
+ min-height:85vh;display:grid;place-items:center;text-align:center;
+ padding:65px 20px 55px;position:relative;overflow:hidden;
+}
+.orbit{
+ width:min(72vw,360px);aspect-ratio:1;border:1px solid #ffffff18;
+ border-radius:50%;position:absolute;display:grid;place-items:center;
+ animation:spin 35s linear infinite;
+}
+.orbit:before,.orbit:after{
+ content:"";position:absolute;border:1px solid #ff70c544;
+ border-radius:50%;inset:13%;
+}
+.orbit:after{inset:27%;border-color:#55cfff55}
+.orbit-dot{
+ position:absolute;top:10%;right:15%;width:12px;height:12px;
+ border-radius:50%;background:#ff9bdf;box-shadow:0 0 25px #ff70c5;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero-content{position:relative;z-index:1;max-width:760px}
+.eyebrow{
+ display:inline-block;border:1px solid #ffffff25;
+ border-radius:50px;padding:8px 16px;color:#e9c5ff;
+ font-size:12px;background:#ffffff08;
+}
+h1{
+ font-size:clamp(37px,8vw,83px);line-height:1.25;
+ margin:25px 0 12px;letter-spacing:-2px;
+}
+.gradient{
+ background:linear-gradient(100deg,#fff 10%,#ff8ed8 45%,#65d5ff 85%);
+ -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p{color:var(--muted);line-height:2;font-size:14px}
+.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:25px}
+.btn{
+ border:1px solid var(--line);border-radius:13px;padding:12px 18px;
+ background:#ffffff09;color:white;transition:.25s;
+}
+.btn:hover{background:#ffffff18;transform:translateY(-2px)}
+.primary{
+ background:linear-gradient(110deg,#d84eab,#765cf5);
+ border:0;box-shadow:0 8px 35px #b34bc536;
+}
+main{width:min(1120px,92%);margin:auto}
+.section{padding:55px 0;scroll-margin-top:90px}
+.section-head{margin-bottom:22px}
+.kicker{font-size:11px;letter-spacing:2px;color:var(--blue)}
+h2{font-size:clamp(24px,4vw,38px);margin:8px 0}
+.sub{font-size:13px;line-height:1.9;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.panel{
+ border:1px solid var(--line);border-radius:24px;
+ background:var(--panel);padding:23px;
+ box-shadow:0 20px 80px #0002;backdrop-filter:blur(15px);
+ min-width:0;
+}
+.panel h3{margin:0 0 8px;font-size:18px}
+.panel p{font-size:13px;line-height:1.9;color:var(--muted)}
+.big-number{font-size:35px;font-weight:800;letter-spacing:1px}
+.big-number small{font-size:12px;color:var(--muted);font-weight:400}
+.statrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}
+.pill{font-size:11px;border:1px solid var(--line);padding:7px 11px;border-radius:50px;color:#d5d2e7}
+.quote{
+ font-size:clamp(18px,3vw,27px);line-height:2;
+ min-height:120px;display:grid;place-items:center;text-align:center;
+ padding:15px 4px;
+}
+.quote:before{content:"“";font-size:35px;color:var(--pink);line-height:1}
+.small-label{font-size:11px;color:var(--muted)}
+.pink{
+ background:radial-gradient(ellipse at top right,#6d194d77,transparent 70%),var(--panel);
+ border-color:#ff70c544;
+}
+.blue{
+ background:radial-gradient(ellipse at top left,#124f7977,transparent 70%),var(--panel);
+ border-color:#55cfff44;
+}
+.gold{
+ background:radial-gradient(ellipse at top,#79602d55,transparent 70%),var(--panel);
+ border-color:#e9c77c55;
+}
+.white{color:#f9f2df}
+.heart-stage{
+ min-height:240px;display:grid;place-items:center;position:relative;
+ overflow:hidden;border-radius:18px;background:#080b1b;
+ border:1px solid var(--line);margin:15px 0;
+}
+.heart-core{
+ font-size:65px;filter:drop-shadow(0 0 24px #ff4fae);
+ animation:heartbeat 1.5s infinite;
+}
+@keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.17)}}
+.floating{
+ position:absolute;animation:float 4s ease-in-out infinite;
+ font-size:22px;pointer-events:none;
+}
+@keyframes float{0%,100%{transform:translateY(15px) rotate(-10deg)}50%{transform:translateY(-18px) rotate(10deg)}}
+.maze{
+ height:320px;position:relative;overflow:hidden;border-radius:20px;
+ background:#071a31;border:1px solid #55cfff66;
+ perspective:500px;display:grid;place-items:center;
+}
+.maze-wall{
+ position:absolute;inset:-100%;
+ background:repeating-radial-gradient(ellipse at center,
+ transparent 0 20px,#55cfff88 21px 23px,transparent 24px 40px);
+ transform:rotateX(58deg) scale(1.3);
+ animation:maze 12s linear infinite;
+}
+@keyframes maze{to{transform:rotateX(58deg) scale(1.3) rotate(360deg)}}
+.maze-name{
+ z-index:1;font-size:clamp(28px,6vw,48px);font-weight:800;
+ color:#e4f8ff;text-shadow:0 0 30px #55cfff;
+}
+.carriers{
+ display:flex;justify-content:center;gap:20px;flex-wrap:wrap;
+ padding:20px 0;
+}
+.carrier{
+ width:85px;height:115px;display:grid;place-items:center;
+ border:1px solid #ffffff19;border-radius:18px;background:#ffffff06;
+ animation:carrier 2s ease-in-out infinite alternate;
+}
+.carrier:nth-child(2){animation-delay:.4s}
+.carrier:nth-child(3){animation-delay:.8s}
+@keyframes carrier{to{transform:translateY(-9px)}}
+.carrier .person{font-size:35px;filter:drop-shadow(0 0 10px #ff70c5)}
+.carrier small{font-size:10px;color:var(--muted)}
+.searchbar{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:15px}
+.searchbar input{
+ flex:1;min-width:150px;background:#ffffff08;color:white;
+ border:1px solid var(--line);border-radius:12px;padding:12px;
+}
+select{
+ background:#14162b;color:white;border:1px solid var(--line);
+ border-radius:12px;padding:11px;max-width:100%;
+}
+.sentence-list{display:grid;gap:10px}
+.sentence{
+ display:flex;align-items:center;justify-content:space-between;
+ gap:12px;padding:14px;border:1px solid var(--line);
+ border-radius:14px;background:#ffffff04;
+}
+.sentence-text{font-size:13px;line-height:2;flex:1}
+.sentence-actions{display:flex;gap:6px;flex-wrap:wrap}
+.icon-btn{
+ border:1px solid var(--line);border-radius:10px;
+ background:#ffffff08;color:white;padding:8px 10px;font-size:12px;
+}
+.icon-btn:hover{background:#ffffff20}
+#effect-layer{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+.particle{
+ position:absolute;top:-40px;animation:fall var(--dur,3s) linear forwards;
+ font-size:var(--size,20px);filter:drop-shadow(0 0 10px #ff70c5);
+}
+@keyframes fall{to{transform:translate3d(var(--drift,0px),110vh,0) rotate(720deg);opacity:.15}}
+.burst{
+ position:absolute;left:50%;top:50%;font-size:25px;
+ animation:burst .95s ease-out forwards;
+}
+@keyframes burst{
+ 0%{transform:translate(-50%,-50%) scale(.2);opacity:1}
+ 100%{transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1.4);opacity:0}
+}
+footer{text-align:center;padding:35px 15px;color:var(--muted);font-size:11px;line-height:2}
+.toast{
+ position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);
+ background:#24223a;border:1px solid var(--line);padding:12px 18px;
+ border-radius:12px;opacity:0;pointer-events:none;transition:.25s;
+ z-index:100;font-size:12px;max-width:90vw;text-align:center;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.empty{text-align:center;color:var(--muted);padding:30px;font-size:13px}
+@media(max-width:650px){
+ header{padding:14px 4%}
+ .logo{font-size:14px}
+ nav{gap:8px}
+ nav a{font-size:10px}
+ .grid{grid-template-columns:1fr}
+ .hero{min-height:75vh}
+ .panel{padding:18px}
+ .sentence{align-items:flex-start;flex-direction:column}
+ .sentence-actions{width:100%}
+ .icon-btn{flex:1}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<div class="aurora"></div>
+<canvas id="stars"></canvas>
+<div id="effect-layer"></div>
+
+<header>
+  <div class="logo">SAHAR<span>VERSE</span></div>
+  <nav>
+    <a href="#universe">جهان عشق</a>
+    <a href="#pink">صورتی</a>
+    <a href="#blue">آبی</a>
+    <a href="#gold">آینده</a>
+    <a href="#library">۵۰۰۰ جمله</a>
+  </nav>
+</header>
+
+<section class="hero" id="universe">
+  <div class="orbit"><div class="orbit-dot"></div></div>
+  <div class="hero-content">
+    <span class="eyebrow">یک جهان، یک سحر، هزاران دلیل برای دوست داشتن</span>
+    <h1>خوش اومدی به<br><span class="gradient">جهان سحر</span></h1>
+    <p>
+      جایی که کلمات معمولی نیستند؛ هر گوشه‌اش یک حس،
+      هر نورش یک خاطره و هر مسیرش یک دلیل تازه برای لبخند توست.
+    </p>
+    <div class="actions">
+      <button class="btn primary" onclick="showRandom()">✨ یه عشق تصادفی</button>
+      <button class="btn" onclick="burstHearts()">💥 انفجار عشق</button>
+      <button class="btn" onclick="rainHearts()">🌧 بارش قلب</button>
+    </div>
+  </div>
+</section>
+
+<main>
+<section class="section">
+  <div class="grid">
+    <article class="panel">
+      <span class="kicker">THE LOVE ENGINE</span>
+      <h3>موتور جمله‌های عاشقانه</h3>
+      <div class="big-number" id="totalCount">5000 <small>جمله</small></div>
+      <p>از جمله‌های لطیف تا قول‌های زندگی مشترک؛ هر جمله شناسه خودش را دارد.</p>
+      <div class="statrow">
+        <span class="pill">۴ قلمرو احساسی</span>
+        <span class="pill">جست‌وجوی فوری</span>
+        <span class="pill">علاقه‌مندی‌ها</span>
+      </div>
+    </article>
+    <article class="panel">
+      <span class="kicker">A LETTER FROM HAMID</span>
+      <h3>یک جمله برای همین لحظه</h3>
+      <div class="quote" id="featuredQuote">سحر، بعضی آدم‌ها فقط وارد زندگی نمی‌شن؛ معنی زندگی رو عوض می‌کنن.</div>
+      <div class="actions">
+        <button class="btn primary" onclick="showRandom()">جمله بعدی ←</button>
+        <button class="btn" onclick="copyText(currentSentence)">کپی جمله</button>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="pink">
+  <div class="section-head">
+    <span class="kicker" style="color:var(--pink)">01 / PINK DREAM</span>
+    <h2>قلمرو صورتیِ کیوت بودن سحر 🎀</h2>
+    <p class="sub">برای لبخندهای ریز، نازهای دوست‌داشتنی و لحظه‌هایی که دنیا با حضور سحر قشنگ‌تر می‌شود.</p>
+  </div>
+  <article class="panel pink">
+    <div class="heart-stage" id="pinkStage">
+      <span class="floating" style="top:18%;right:17%">🎀</span>
+      <span class="floating" style="top:65%;left:17%;animation-delay:-2s">🦋</span>
+      <span class="floating" style="top:22%;left:22%;animation-delay:-1s">💗</span>
+      <div class="heart-core">💖</div>
+    </div>
+    <div class="quote" id="pinkQuote">ناز سحر از اون چیزاست که نمی‌شه توضیحش داد؛ فقط باید از نزدیک دید و عاشق‌تر شد.</div>
+    <div class="actions">
+      <button class="btn primary" onclick="nextCategory('pink')">یه ناز جدید 💗</button>
+      <button class="btn" onclick="rainHearts()">بارش صورتی</button>
+    </div>
+  </article>
+</section>
+
+<section class="section" id="blue">
+  <div class="section-head">
+    <span class="kicker">02 / BLUE DIMENSION</span>
+    <h2>بُعد آبیِ سحر 🌌</h2>
+    <p class="sub">آبی، رنگ مورد علاقه سحر؛ رنگ آرامش، آسمان بی‌انتها و حس‌هایی که با هیچ رنگ دیگری عوض نمی‌شوند.</p>
+  </div>
+  <article class="panel blue">
+    <div class="maze">
+      <div class="maze-wall"></div>
+      <div class="maze-name">SAHAR ∞ سحر</div>
+    </div>
+    <div class="quote" id="blueQuote">اگه آرامش یه رنگ داشت، برای من آبی بود؛ اگه آبی یه اسم داشت، اسمش سحر بود.</div>
+    <div class="actions">
+      <button class="btn primary" onclick="nextCategory('blue')">کشف مسیر تازه 🌀</button>
+      <button class="btn" onclick="rainHearts('💙')">بارش آبی</button>
+    </div>
+  </article>
+</section>
+
+<section class="section" id="gold">
+  <div class="section-head">
+    <span class="kicker" style="color:var(--gold)">03 / FOREVER</span>
+    <h2>جهان سفید و طلایی؛ حمید و سحر 💍</h2>
+    <p class="sub">نه فقط حرف‌های قشنگ؛ آرزوی ساختن خانه‌ای پر از احترام، آرامش، رفاقت و عشق دوطرفه.</p>
+  </div>
+  <article class="panel gold white">
+    <div class="heart-stage" style="background:radial-gradient(ellipse,#66502c55,#080a18)">
+      <span class="floating" style="right:20%;top:20%">✨</span>
+      <span class="floating" style="left:20%;bottom:20%;animation-delay:-2s">🤍</span>
+      <div class="heart-core" style="filter:drop-shadow(0 0 25px #e9c77c)">💍</div>
+    </div>
+    <div class="quote" id="goldQuote">سحر، آرزوی من فقط رسیدن به تو نیست؛ ساختن زندگی‌ایه که توش هر روز احساس کنی انتخاب شدی، دوست داشته می‌شی و آرامشی.</div>
+    <div class="actions">
+      <button class="btn primary" onclick="nextCategory('gold')">نامه بعدی از حمید</button>
+      <button class="btn" onclick="copyText(document.getElementById('goldQuote').innerText)">کپی نامه</button>
+    </div>
+  </article>
+</section>
+
+<section class="section" id="carriers">
+  <div class="section-head">
+    <span class="kicker">04 / THE HEART MESSENGERS</span>
+    <h2>حمله‌ی حاملان عشق ❤️‍🔥</h2>
+    <p class="sub">سه پیام‌رسان خیالی وارد میدان می‌شن و قلب‌ها و جمله‌ها رو به طرف سحر می‌برن!</p>
+  </div>
+  <article class="panel">
+    <div class="carriers">
+      <div class="carrier"><span class="person">🧑🏻‍🚀</span><span>💗</span><small>حامل قلب</small></div>
+      <div class="carrier"><span class="person">🪽</span><span>💌</span><small>حامل نامه</small></div>
+      <div class="carrier"><span class="person">🧚🏻</span><span>✨</span><small>حامل نور</small></div>
+    </div>
+    <div class="quote" id="carrierQuote">مأموریت امروز: رساندن یک لبخند واقعی به سحر؛ مقصد مشخص، مسیر پر از عشق!</div>
+    <div class="actions">
+      <button class="btn primary" onclick="launchCarriers()">🚀 شروع مأموریت</button>
+    </div>
+  </article>
+</section>
+
+<section class="section" id="library">
+  <div class="section-head">
+    <span class="kicker">05 / THE INFINITE LIBRARY</span>
+    <h2>کتابخانه ۵۰۰۰ جمله عاشقانه</h2>
+    <p class="sub">دنبال یک جمله خاص می‌گردی؟ جست‌وجو کن، دسته را انتخاب کن، ذخیره کن یا برای سحر بفرست.</p>
+  </div>
+  <div class="panel">
+    <div class="searchbar">
+      <input id="searchInput" placeholder="مثلاً: سحر، آبی، لبخند، آینده..." oninput="renderLibrary()">
+      <select id="categorySelect" onchange="renderLibrary()">
+        <option value="all">همه قلمروها</option>
+        <option value="pink">صورتی و کیوت</option>
+        <option value="blue">آبی و آرامش</option>
+        <option value="gold">ازدواج و آینده</option>
+        <option value="love">عشق و دلتنگی</option>
+      </select>
+      <button class="btn" onclick="showRandom()">جمله تصادفی</button>
+      <button class="btn" onclick="showFavorites()">❤️ محبوب‌ها</button>
+    </div>
+    <div class="small-label" id="resultCount"></div>
+    <div class="sentence-list" id="sentenceList"></div>
+    <div class="actions">
+      <button class="btn primary" id="moreBtn" onclick="showMore()">نمایش جمله‌های بیشتر ↓</button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <article class="panel">
+    <span class="kicker">A LITTLE PROMISE</span>
+    <h2>برای سحر، از طرف حمید</h2>
+    <p style="line-height:2.3">
+      سحر جان، هیچ سایتی نمی‌تونه تمام احساس آدم رو توی خودش جا بده.
+      اینجا فقط یه گوشه کوچیک از چیزیه که می‌خوام هر روز با رفتارم نشونت بدم:
+      دوست داشتن، احترام، شنیدن حرف‌هات، حمایت از رؤیاهات و تلاش برای ساختن آینده‌ای که هر دومون توش خوشحال باشیم.
+    </p>
+    <div class="small-label">با عشق، حمید ♥</div>
+  </article>
+</section>
+</main>
+
+<footer>
+  SAHARVERSE · ساخته‌شده با عشق، برای سحر<br>
+  بعضی حس‌ها را نمی‌شود شمرد؛ حتی اگر برایشان ۵۰۰۰ جمله بنویسیم.
+</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ==========================================
+   SAHARVERSE ENGINE
+   50 آغاز × 100 پایان = 5000 جمله یکتا
+   ========================================== */
+
+const beginnings = [
+"سحر جان،","سحر قشنگم،","ای آرامش من،","خانوم قشنگم،",
+"دختر دوست‌داشتنی من،","سحر عزیزم،","ای دلیل لبخندم،",
+"برای تو سحر جان،","وقتی به تو فکر می‌کنم،","هر بار که اسمت رو می‌شنوم،",
+"توی دنیای شلوغ من،","از بین تمام اتفاق‌های زندگی،",
+"اگر بخوام از عشق بگم،","وقتی کنارمی،","وقتی ازت دورم،",
+"توی خیال قشنگم،","برای قلب مهربونت،","برای لبخند قشنگت،",
+"برای چشم‌های دوست‌داشتنیت،","برای شیطنت‌های بامزه‌ات،",
+"در قصه زندگی من،","در تمام فصل‌های زندگی،","هر صبح که به فردا فکر می‌کنم،",
+"وقتی آینده رو تصور می‌کنم،","اگر دنیا هزار رنگ داشته باشه،",
+"در آسمون خیال من،","بین تمام ستاره‌ها،","اگر آرامش اسم داشت،",
+"اگر خوشبختی شکل داشت،","اگر عشق صدا داشت،",
+"از ته قلبم می‌گم،","با تمام سادگی این حرف،","بدون هیچ اغراقی،",
+"در سکوت قشنگ شب،","در شلوغ‌ترین روزها،","وقتی خسته‌ای،",
+"وقتی دلت می‌گیره،","وقتی از ته دل می‌خندی،","وقتی به آرزوهات فکر می‌کنی،",
+"اگر روزی از خودت پرسیدی،","در روزهای خوب و سخت،","برای روزهای آینده‌مون،",
+"از امروز تا فردا،","در دفتر خاطراتم،","در تمام نامه‌های ننوشته‌ام،",
+"اگر هزار بار فرصت داشته باشم،","در این جهان بزرگ،",
+"از بین میلیون‌ها آدم،","در قصه من و تو،","برای تو که خاصی،"
+];
+
+const endings = [
+"بودنت به روزهای من معنی تازه می‌ده.",
+"لبخندت قشنگ‌ترین اتفاق روزمه.",
+"دلم می‌خواد همیشه احساس امنیت و آرامش کنی.",
+"دوست دارم دلیل لبخندت باشم، نه دلیل اشکت.",
+"حضور تو دنیا رو برای من لطیف‌تر می‌کنه.",
+"هیچ چیز جای صداقت و مهربونی تو رو نمی‌گیره.",
+"دلم می‌خواد رؤیاهات رو کنار تو دنبال کنم.",
+"خوشحالم که فرصت شناختنت رو دارم.",
+"بودنت برای من یک هدیه ارزشمنده.",
+"دلم می‌خواد هر روز بیشتر همدیگه رو بفهمیم.",
+"عشق یعنی انتخاب دوباره همدیگه، حتی در روزهای سخت.",
+"دوست دارم همیشه بتونی خود واقعی‌ات باشی.",
+"مهربونی تو از اون چیزهاییه که توی دل می‌مونه.",
+"با تو حتی لحظه‌های ساده هم خاطره می‌شن.",
+"می‌خوام به حرف‌هات گوش بدم، حتی وقتی پاسخی ندارم.",
+"قشنگی تو فقط توی ظاهر نیست؛ توی قلبت هم هست.",
+"بودنت یادم می‌اندازه که هنوز اتفاق‌های قشنگی وجود دارن.",
+"دلم می‌خواد کنار هم رشد کنیم، نه اینکه همدیگه رو محدود کنیم.",
+"برای خوشحالی تو، اول از همه به احترام و آرامشت فکر می‌کنم.",
+"تو لازم نیست همیشه قوی باشی؛ گاهی فقط استراحت کن.",
+"من عاشق لحظه‌هایی‌ام که خودت هستی و نقش بازی نمی‌کنی.",
+"هر خاطره ساده با تو می‌تونه برای من باارزش بشه.",
+"دوست دارم از موفقیت‌هات با تمام وجود خوشحال بشم.",
+"آرزو دارم هیچ‌وقت برای دوست‌داشتنی بودن خودت رو تغییر ندی.",
+"وقتی ناراحتی، سزاوار شنیده شدن و درک شدنی.",
+"می‌خوام کنار هم راه‌حل پیدا کنیم، نه اینکه دنبال مقصر بگردیم.",
+"آینده قشنگ با قول‌های بزرگ ساخته نمی‌شه؛ با کارهای کوچیک ساخته می‌شه.",
+"دوست دارم در کنار تو هم عاشق باشم، هم رفیق قابل اعتماد.",
+"می‌خوام اختلاف‌هامون رو با احترام حل کنیم.",
+"آرامش تو باید در رفتار من هم دیده بشه.",
+"برای من اعتماد از هر حرف عاشقانه‌ای باارزش‌تره.",
+"عشق وقتی قشنگ‌تره که هر دو نفر آزادانه انتخابش کنن.",
+"دلم می‌خواد کنار هم از روزهای معمولی هم لذت ببریم.",
+"دوست دارم موفقیت‌هات رو جشن بگیریم، حتی اگر کوچک باشن.",
+"تو سزاوار رابطه‌ای پر از احترام، امنیت و مهربونی هستی.",
+"من به جای وعده‌های عجیب، می‌خوام با رفتارم ثابت‌قدم باشم.",
+"با تو درباره آینده حرف زدن برای من امیدبخشه.",
+"خوشبختی شاید همین باشه که کنار هم خودمون باشیم.",
+"دوست دارم خانه‌مون روزی پر از خنده و گفت‌وگو باشه.",
+"دلم می‌خواد در روزهای سخت هم با هم مهربون بمونیم.",
+"دوست دارم تصمیم‌های بزرگ رو با مشورت هم بگیریم.",
+"آینده برای من وقتی قشنگه که هر دومون درش جا داشته باشیم.",
+"می‌خوام به آرزوهات احترام بذارم و تشویقت کنم.",
+"دوست دارم کنار هم خاطره‌هایی بسازیم که با لبخند تعریفشون کنیم.",
+"رابطه خوب یعنی هر دو نفر بتونن حرف دلشون رو بزنن.",
+"برای من عشق فقط گفتن دوستت دارم نیست؛ عمل کردن به اونه.",
+"دوست دارم در کنار تو یاد بگیرم آدم بهتری باشم.",
+"می‌خوام در روزهای شلوغ هم برای هم وقت بذاریم.",
+"امیدوارم همیشه بین ما جا برای خنده، گفت‌وگو و آشتی باشه.",
+"دوست دارم کنار هم پیر بشیم و خاطراتمون رو مرور کنیم.",
+"آبی برای من یادآور آرامشه و تو یکی از قشنگ‌ترین دلیل‌های اون حسی.",
+"آسمون آبی هم نمی‌تونه بزرگی آرزوهام برای خوشحالی تو رو اندازه بگیره.",
+"گاهی یک پیام ساده از تو کل روزم رو عوض می‌کنه.",
+"دلم برای گفت‌وگوهای طولانی و بی‌دلیل با تو تنگ می‌شه.",
+"صدای خنده‌ات می‌تونه یک لحظه معمولی رو خاص کنه.",
+"از اون شیطنت‌های کوچیکت خاطره‌های بزرگ می‌سازم.",
+"قشنگی لحظه‌ها به قیمتشون نیست؛ به حسیه که با تو دارن.",
+"دلم می‌خواد وقتی خسته‌ای، لازم نباشه وانمود کنی حالت خوبه.",
+"دوست دارم کنارت از ته دل بخندم.",
+"برای من خاص بودن تو به شبیه کسی نبودنت هم مربوطه.",
+"بعضی آدم‌ها با حضورشون حس خانه می‌دن.",
+"تو می‌تونی هم لطیف باشی، هم محکم، هم خودت.",
+"هر کدوم از رؤیاهات ارزش شنیده شدن داره.",
+"دلم می‌خواد با هم چیزهای تازه یاد بگیریم.",
+"عشق واقعی جای ترسوندن و کنترل کردن نیست؛ جای اعتماد و احترامه.",
+"اگر اشتباه کنم، باید مسئولیتش رو بپذیرم و جبران کنم.",
+"دوست دارم حتی هنگام دلخوری هم حرمت همدیگه رو نگه داریم.",
+"می‌خوام خوشحالی تو فقط به حضور من وابسته نباشه؛ خودت هم بدرخشی.",
+"دلم می‌خواد برای خودت و آینده‌ات احساس غرور کنی.",
+"تو حق داری نظر متفاوت داشته باشی و شنیده بشی.",
+"برای ساختن آینده باید با هم تلاش کنیم و به هم فرصت بدیم.",
+"من رابطه‌ای می‌خوام که هر دومون درش احساس آرامش کنیم.",
+"دوست دارم با هم برای هدف‌هامون برنامه‌ریزی کنیم.",
+"یک عذرخواهی واقعی باید با تغییر رفتار همراه باشه.",
+"می‌خوام وقتی حرف می‌زنی، با دقت و بدون قضاوت گوش بدم.",
+"دلم می‌خواد اختلاف‌هامون باعث شناخت بیشترمون بشه.",
+"برای من مهربونی در جزئیات روزمره خودش رو نشون می‌ده.",
+"دوست دارم از موفقیت هم خوشحال بشیم، نه اینکه رقابت کنیم.",
+"هر روز می‌تونه فرصت تازه‌ای برای بهتر رفتار کردن باشه.",
+"می‌خوام رابطه‌مون جایی برای رشد هر دومون باشه.",
+"دلم می‌خواد کنار هم به هدف‌های شخصی‌مون هم برسیم.",
+"زندگی مشترک خوب با مشارکت و مسئولیت‌پذیری ساخته می‌شه.",
+"آرزو دارم روزی جشن خوشحالی‌هامون رو کنار خانواده بگیریم.",
+"دوست دارم خاطراتمون پر از سفرهای ساده و خنده‌های واقعی باشه.",
+"خانه رؤیایی من جاییه که هر دو درش احساس احترام کنیم.",
+"دلم می‌خواد برای روزهای سخت هم نقشه و پشتوانه داشته باشیم.",
+"قول خوب اونیه که با توان واقعی و عمل همراه باشه.",
+"من می‌خوام در کنار تو قابل اعتمادتر بشم.",
+"عشق ما باید برای هر دومون جا برای نفس کشیدن داشته باشه.",
+"دوست دارم همیشه درباره خواسته‌هامون صادق باشیم.",
+"دلم می‌خواد با هم تصمیم بگیریم، نه به جای هم.",
+"خاطره قشنگ گاهی از یک قدم زدن ساده شروع می‌شه.",
+"دلم می‌خواد یک روز به گذشته نگاه کنیم و به تلاش‌هامون لبخند بزنیم.",
+"برای من تعهد یعنی در عمل هم پای حرفم بایستم.",
+"تو لازم نیست کامل باشی تا دوست‌داشتنی باشی.",
+"من هم کامل نیستم، اما می‌تونم یاد بگیرم و بهتر بشم.",
+"دوست دارم شادی‌هامون رو با هم تقسیم کنیم.",
+"آرزو دارم روزهای آرام و پرامید زیادی پیش رومون باشه.",
+"از همین امروز می‌شه یک خاطره خوب تازه ساخت.",
+"عشق وقتی ریشه می‌گیره که مراقبت از هم دوطرفه باشه.",
+"دوست دارم این قصه با انتخاب و رضایت هر دومون ادامه پیدا کنه."
+];
+
+const categories = [
+ {key:"pink",name:"صورتی و کیوت",ids:[0,1,4,5,15,17,18,19,37,54,55,56,57,58]},
+ {key:"blue",name:"آبی و آرامش",ids:[10,11,12,13,14,24,25,26,27,28,29,49,50,51,52]},
+ {key:"gold",name:"ازدواج و آینده",ids:[16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48]},
+ {key:"love",name:"عشق و دلتنگی",ids:[]}
+];
+
+let allSentences=[];
+let currentSentence="سحر، بعضی آدم‌ها فقط وارد زندگی نمی‌شن؛ معنی زندگی رو عوض می‌کنن.";
+let visibleCount=20;
+let favorites=new Set();
+let favoritesOnly=false;
+let currentFiltered=[];
+
+function buildSentences(){
+ const seen=new Set();
+ let id=1;
+ for(let i=0;i<beginnings.length;i++){
+   for(let j=0;j<endings.length;j++){
+     const text=beginnings[i]+" "+endings[j];
+     if(seen.has(text))continue;
+     seen.add(text);
+     let cat="love";
+     if([0,1,4,5,15,17,18,19,37].includes(i))cat="pink";
+     else if([10,11,12,13,14,24,25,26,27,28,29].includes(i))cat="blue";
+     else if(i>=20 || i>=40)cat="gold";
+     allSentences.push({id:id++,text,cat});
+   }
+ }
+ // اگر تعداد بانک بیشتر از ۵۰۰۰ شد، فقط ۵۰۰۰ مورد اول نمایش داده می‌شود.
+ allSentences=allSentences.slice(0,5000);
+ document.getElementById("totalCount").innerHTML=
+   allSentences.length+' <small>جمله</small>';
+}
+function pick(arr){return arr[Math.floor(Math.random()*arr.length)]}
+function showRandom(){
+ const s=pick(allSentences);
+ currentSentence=s.text;
+ document.getElementById("featuredQuote").textContent=s.text;
+ burstHearts();
+}
+function nextCategory(cat){
+ const list=allSentences.filter(s=>s.cat===cat);
+ const s=pick(list.length?list:allSentences);
+ currentSentence=s.text;
+ const el=document.getElementById(cat+"Quote");
+ if(el)el.textContent=s.text;
+ burstHearts(12);
+}
+function toast(msg){
+ const t=document.getElementById("toast");
+ t.textContent=msg;t.classList.add("show");
+ clearTimeout(toast.timer);
+ toast.timer=setTimeout(()=>t.classList.remove("show"),2100);
+}
+async function copyText(text){
+ try{
+   if(navigator.clipboard && window.isSecureContext){
+     await navigator.clipboard.writeText(text);
+   }else{
+     const ta=document.createElement("textarea");
+     ta.value=text;ta.style.position="fixed";ta.style.opacity="0";
+     document.body.appendChild(ta);ta.select();
+     const ok=document.execCommand("copy");ta.remove();
+     if(!ok)throw new Error("copy failed");
+   }
+   toast("جمله با موفقیت کپی شد ❤️");
+ }catch(e){toast("کپی خودکار در این مرورگر فعال نیست؛ متن را انتخاب و کپی کن.");}
+}
+function toggleFavorite(id){
+ if(favorites.has(id))favorites.delete(id);
+ else favorites.add(id);
+ renderLibrary();
+ toast(favorites.has(id)?"به محبوب‌ها اضافه شد ❤️":"از محبوب‌ها حذف شد");
+}
+function showFavorites(){
+ favoritesOnly=!favoritesOnly;
+ visibleCount=20;
+ document.querySelector("#library h2").textContent=
+   favoritesOnly?"جمله‌های محبوب تو ❤️":"کتابخانه ۵۰۰۰ جمله عاشقانه";
+ renderLibrary();
+}
+function renderLibrary(){
+ const query=document.getElementById("searchInput").value.trim().toLowerCase();
+ const cat=document.getElementById("categorySelect").value;
+ currentFiltered=allSentences.filter(s=>{
+   const matchText=s.text.toLowerCase().includes(query);
+   const matchCat=cat==="all"||s.cat===cat;
+   const matchFav=!favoritesOnly||favorites.has(s.id);
+   return matchText&&matchCat&&matchFav;
+ });
+ const list=document.getElementById("sentenceList");
+ document.getElementById("resultCount").textContent=
+   `${currentFiltered.length.toLocaleString("fa-IR")} جمله پیدا شد`;
+ list.innerHTML="";
+ if(!currentFiltered.length){
+   list.innerHTML='<div class="empty">چیزی پیدا نشد. عبارت دیگری را امتحان کن.</div>';
+   document.getElementById("moreBtn").style.display="none";return;
+ }
+ const shown=currentFiltered.slice(0,visibleCount);
+ shown.forEach(s=>{
+   const row=document.createElement("div");
+   row.className="sentence";
+   const text=document.createElement("div");
+   text.className="sentence-text";
+   text.textContent=s.text;
+   const acts=document.createElement("div");
+   acts.className="sentence-actions";
+   const copy=document.createElement("button");
+   copy.className="icon-btn";copy.textContent="کپی";
+   copy.onclick=()=>copyText(s.text);
+   const fav=document.createElement("button");
+   fav.className="icon-btn";
+   fav.textContent=favorites.has(s.id)?"❤️ ذخیره‌شده":"♡ محبوب";
+   fav.onclick=()=>toggleFavorite(s.id);
+   const use=document.createElement("button");
+   use.className="icon-btn";use.textContent="نمایش";
+   use.onclick=()=>{
+     currentSentence=s.text;
+     document.getElementById("featuredQuote").textContent=s.text;
+     window.scrollTo({top:0,behavior:"smooth"});
+   };
+   acts.append(copy,fav,use);row.append(text,acts);list.appendChild(row);
+ });
+ document.getElementById("moreBtn").style.display=
+   visibleCount<currentFiltered.length?"inline-block":"none";
+}
+function showMore(){visibleCount+=20;renderLibrary()}
+
+const layer=document.getElementById("effect-layer");
+function burstHearts(count=35){
+ const symbols=["💗","💖","💕","✨","💘","🤍"];
+ for(let i=0;i<count;i++){
+   const el=document.createElement("span");
+   el.className="burst";el.textContent=pick(symbols);
+   const angle=Math.random()*Math.PI*2;
+   const dist=100+Math.random()*230;
+   el.style.setProperty("--x",Math.cos(angle)*dist+"px");
+   el.style.setProperty("--y",Math.sin(angle)*dist+"px");
+   layer.appendChild(el);
+   setTimeout(()=>el.remove(),1100);
+ }
+}
+function rainHearts(symbol){
+ const symbols=symbol?[symbol]:["💗","💖","💕","✨","🤍"];
+ for(let i=0;i<65;i++){
+   const el=document.createElement("span");
+   el.className="particle";el.textContent=pick(symbols);
+   el.style.left=Math.random()*100+"%";
+   el.style.setProperty("--dur",(2+Math.random()*4)+"s");
+   el.style.setProperty("--size",(12+Math.random()*20)+"px");
+   el.style.setProperty("--drift",(-100+Math.random()*200)+"px");
+   el.style.animationDelay=Math.random()*1.5+"s";
+   layer.appendChild(el);
+   setTimeout(()=>el.remove(),7500);
+ }
+}
+function launchCarriers(){
+ const q=pick(allSentences);
+ document.getElementById("carrierQuote").textContent=q.text;
+ burstHearts(60);rainHearts("💌");
+ toast("مأموریت عشق شروع شد! ❤️");
+}
+
+// ستاره‌های پس‌زمینه؛ متناسب با اندازه صفحه
+const canvas=document.getElementById("stars");
+const ctx=canvas.getContext("2d");
+let stars=[];
+function resizeStars(){
+ const dpr=Math.min(window.devicePixelRatio||1,2);
+ canvas.width=innerWidth*dpr;canvas.height=innerHeight*dpr;
+ canvas.style.width=innerWidth+"px";canvas.style.height=innerHeight+"px";
+ ctx.setTransform(dpr,0,0,dpr,0,0);
+ stars=Array.from({length:Math.min(130,Math.floor(innerWidth/7))},()=>({
+  x:Math.random()*innerWidth,y:Math.random()*innerHeight,
+  r:Math.random()*1.5+.3,a:Math.random()*.7+.15,
+  v:Math.random()*.008+.002
+ }));
+}
+function drawStars(){
+ ctx.clearRect(0,0,innerWidth,innerHeight);
+ for(const s of stars){
+  s.a+=s.v;if(s.a>.9||s.a<.1)s.v*=-1;
+  ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+  ctx.fillStyle=`rgba(220,225,255,${s.a})`;ctx.fill();
+ }
+ requestAnimationFrame(drawStars);
+}
+window.addEventListener("resize",resizeStars);
+buildSentences();
+resizeStars();
+drawStars();
+renderLibrary();
+</script>
+</body>
+</html>
